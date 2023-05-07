@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Container, CssBaseline, Grid } from '@mui/material';
+import './styles.js';
+import useStyles from './styles.js';
+import SideNav from './Component/SideNav.js';
+import Posts from './Component/Posts.js';
+import Friends from './Component/Friends.js';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <div className="App">
+        <CssBaseline />
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
+            <SideNav></SideNav>
+          </Grid>
+          <Grid item xs={4}>
+            <Posts></Posts>
+          </Grid>
+          <Grid item xs={4}>
+            <Friends></Friends>
+          </Grid>
+        </Grid>
+      </div>
+    </ThemeProvider>
   );
 }
 
