@@ -15,7 +15,7 @@ export const getAll = async () => {
 
 export const create = async (post) => {
     try {
-        const { data } = save(post);
+        const { data } = await save(post);
         console.log('creating post');
         return { data: data, error: null };
 

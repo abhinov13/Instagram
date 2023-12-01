@@ -1,33 +1,45 @@
 import { useState, useEffect } from "react";
 import GetPosts from "../../../../Domain/UseCase/Post/GetPosts";
 
-const PostContainerViewModel = () => {
+const PostContainerViewModel = ({setPostsLoader}) => {
     const [posts, setPosts] = useState([]);
-    useEffect(
-        () => {
-            const getter = GetPosts();
-            getter.execute().then(({ data }) => {
-                if (data != null)
-                {
+
+    const loadPosts = () => {
+        GetPosts()
+            .execute()
+            .then(({ data }) => {
+                console.log("after getting the posts");
+                console.log(data);
+                if (data != null) {
                     setPosts(data);
                 }
                 else {
                     alert('Oops! An error has occurred');
                 }
             });
-        }, []
+    };
+
+    useEffect(
+        () => {
+            loadPosts();
+        },[]
     );
 
-    const [data,setData] = useState(null);
+    useEffect(
+        () => {
+            console.log("trying to set loader");
+            setPostsLoader(loadPosts);
+        }, [setPostsLoader]
+    )
 
-    function resetPopupParams()
-    {
+    const [data, setData] = useState(null);
+
+    function resetPopupParams() {
         setData(null);
     }
 
-    function getPopupParams(data)
-    {
-        data = {...data, resetPopupParams};
+    function getPopupParams(data) {
+        data = { ...data, resetPopupParams };
         setData(data);
     }
 

@@ -14,7 +14,7 @@ const Post = (props) => {
                     <div className="post_user_img"><img src="user.svg" alt="user" /></div>
                     <div className="post_username">{props.username}</div>
                     <div className="dot_seperator"></div>
-                    <div className="date_posted">{GetTimeElapsed(new Date(props.creationDate))}</div>{/**make additional logic to display in correct format */}
+                    <div className="date_posted">{GetTimeElapsed(new Date(props.creationDate))}</div>
                     <div className="post_menu"><img src="dotMenu.svg" alt="menu" /></div>
                 </div>
 

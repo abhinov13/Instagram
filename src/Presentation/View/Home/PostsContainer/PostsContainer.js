@@ -1,12 +1,12 @@
 import Post from "../Component/Post/Post";
 import PostPopup from "../Component/PostPopup/PostPopup";
 import PostContainerViewModel from "./PostsContainerViewModel";
-const PostsContainer = () => {
+const PostsContainer = (props) => {
     const {
         posts,
         getPopupParams,
         data
-    } = PostContainerViewModel();
+    } = PostContainerViewModel(props);
 
     return (
         <>

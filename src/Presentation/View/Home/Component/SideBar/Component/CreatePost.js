@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import CreatePostViewModel from "./CreatePostViewModel"
 
 const CreatePost = (props) => {
@@ -6,17 +7,17 @@ const CreatePost = (props) => {
         setDescription,
         uploadRequest,
         updateImage
-    } = CreatePostViewModel();
+    } = CreatePostViewModel(props, useLocation());
 
     return <div className="banner_wrapper">
         <div className="upload">
             <div className="banner_header">Create New Post
-                <img src="close.svg" style={{ height: "80%", float: "right", marginRight: "2%", cursor: "pointer" }} onClick={() => { props.setCreate(false) }} />
+                <img src="close.svg" alt="close button" style={{ height: "80%", float: "right", marginRight: "2%", cursor: "pointer" }} onClick={() => { props.setCreate(false) }} />
             </div>
             <div style={{ backgroundColor: "#444444", height: "0.01rem", width: "100%" }} className="centre_vertically" />
             <div className="create_post_seperator">
                 <div style={{ width: "63%" }}>
-                    <img src={imgSrc} style={{ height: "100%", width: "100%" }} />
+                    <img src={imgSrc} alt="original post" style={{ height: "100%", width: "100%" }} />
                 </div>
                 <div style={{ width: "33%" }} className="create_post_control">
                     Description

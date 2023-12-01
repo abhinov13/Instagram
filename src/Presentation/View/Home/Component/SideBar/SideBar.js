@@ -10,7 +10,7 @@ const SideBar = (props) => {
 
     if (props.isOpen) {
        return <>
-       {create? <CreatePost setCreate={setCreate}/> : null}
+       {create? <CreatePost setCreate={setCreate} loadPosts={props.loadPosts}/> : null}
           <div className="side_bar">
              <img src="instaLogoDark.svg" className="sidebar_logo" alt="Home icon"/>
              <div>

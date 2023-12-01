@@ -6,14 +6,16 @@ import UserContext from "./UserContext/UserContext";
 
 const Home = () => {
     const {
-        data
+        data,
+        loadPosts,
+        setPostsLoader
     } = HomeViewModel(useLocation());
     return (
         <UserContext data={data}>
             <div className="homepage_wrapper">
-                <SideBar isOpen={true} />
+                <SideBar isOpen={true} loadPosts={loadPosts}/>
                 <Routes>
-                    <Route path="/" Component={PostsContainer} />
+                    <Route path="/" element={<PostsContainer setPostsLoader={setPostsLoader} />}/>
                 </Routes>
             </div>
         </UserContext>
