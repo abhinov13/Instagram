@@ -10,7 +10,7 @@ const Entry = (props) => {
             <div className="login_page centre_vertically">
                 <div className="centre_horizontally" style={{ width: "60%", position: "relative", height: "100%" }}>
                     <div className="login_left">
-                        <img src="loginLeft.png" alt="Instagram Mobile Demo" style={{ height: "100%", width: "100%" }} />
+                        <img src="/loginLeft.png" alt="Instagram Mobile Demo" style={{ height: "100%", width: "100%" }} />
                     </div>
                     <div className="login_right">
                         <Routes>

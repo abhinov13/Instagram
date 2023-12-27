@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Authenticate from "../../../../Domain/UseCase/User/Authenticate";
+import { useUser } from "../../../Context/UserContext/UserContext";
 
 export const LoginViewModel = () => {
 
@@ -8,6 +9,7 @@ export const LoginViewModel = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const usernameSetter = useUser();
 
     const attemptLogin = (e) => {
         e.preventDefault();
@@ -16,7 +18,9 @@ export const LoginViewModel = () => {
         .then(({data}) => {
             if(data)
             {
-                navigate('/home', { state: { username: username} });
+                usernameSetter.setUsername(username);
+                localStorage.setItem("username", username);
+                navigate('/home');
             }
             else{
                 alert('Wrong Username or Password');

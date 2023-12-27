@@ -1,24 +1,35 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import SideBar from "./Component/SideBar/SideBar";
 import PostsContainer from "./PostsContainer/PostsContainer";
 import HomeViewModel from "./HomeViewModel";
-import UserContext from "./UserContext/UserContext";
-
+import PeopleContainer from "./PeopleYouMayKnow/PeopleContainer";
+import SuggestedFriendsBar from "./Component/SuggestedFriendsBar/SuggestedFriendsBar";
+import Search from "./Component/Search/Search";
+import { WebSocketProvider } from "../../Context/WSContext/WSContext";
+import { StompSessionProvider } from "react-stomp-hooks";
+import Notifications from "./Component/Notifications/Notifications";
+import User from "../User/User";
 const Home = () => {
     const {
-        data,
-        loadPosts,
-        setPostsLoader
-    } = HomeViewModel(useLocation());
+        posts,
+        postLoader
+    } = HomeViewModel();
     return (
-        <UserContext data={data}>
-            <div className="homepage_wrapper">
-                <SideBar isOpen={true} loadPosts={loadPosts}/>
-                <Routes>
-                    <Route path="/" element={<PostsContainer setPostsLoader={setPostsLoader} />}/>
-                </Routes>
-            </div>
-        </UserContext>
+        <StompSessionProvider url={'http://localhost:8080/notifications'}>
+            <WebSocketProvider>
+                <div className="homepage_wrapper">
+                    <SideBar isOpen={true} postLoader={postLoader} />
+                    <Routes>
+                        <Route path="/PeopleYouMayKnow" Component={PeopleContainer} />
+                        <Route path="/Search" Component={Search} />
+                        <Route path="/" element={<><PostsContainer posts={posts} postLoader={postLoader} /> <SuggestedFriendsBar /> </>} />
+                        <Route path="/Notifications" Component={Notifications} />
+                        <Route path="/User/:profileUsername" Component={User} />
+                        <Route path='/*' element={<Navigate to='/NotFound' />} />
+                    </Routes>
+                </div>
+            </WebSocketProvider>
+        </StompSessionProvider>
     );
 }
 

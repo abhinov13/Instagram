@@ -16,7 +16,7 @@ const Signup = (props) => {
     return (
         <>
             <div className="login_form" style={{ height: "73%" }}>
-                <img src="instaTextLogo.svg" className="login_logo centre_horizontally" alt="Instagram Logo" />
+                <img src="/instaTextLogo.svg" className="login_logo centre_horizontally" alt="Instagram Logo" />
                 <form onSubmit={(e) => props.login(e)} style={{ width: "75%", position: "relative" }} className="centre_horizontally">
                     <div className="login_input">
                         <input type="text" className="text_input" placeholder="Mobile Number or Email" onChange={(event) => { setMobileOrEmail(event.target.value) }} style={validMobileOrEmail} required />

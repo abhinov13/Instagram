@@ -5,6 +5,11 @@ export const getPosts = () => {
     const call = link + '/getPosts';
     return axios.get(call);
 }
+
+export const getPostsForUser = (username) => {
+    const call = link + '/getPosts/'+username;
+    return axios.get(call);
+}
 /**
  * @param {{file, username, description}} data 
  */
@@ -15,4 +20,14 @@ export const save = (data) => {
             "Content-Type": "multipart/form-data",
         }
     });
+}
+
+export const like = (data) => {
+    const call = link + '/like';
+    return axios.post(call,data);
+}
+
+export const unlike = (data) => {
+    const call = link + '/unlike';
+    return axios.post(call,data);
 }

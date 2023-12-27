@@ -1,16 +1,21 @@
-import { useRef } from "react";
+import { useCallback, useState } from "react";
+import GetPosts from "../../../Domain/UseCase/Post/GetPosts";
 
-const HomeViewModel = (location) => {
-    const data = { username: location.state.username };
-    const loadPosts = useRef(null);
-    function setPostsLoader(loader) {
-        loadPosts.current = loader;
-    }
+const HomeViewModel = () => {
+
+    const [posts, setPosts] = useState([]);
+
+    const postLoader = useCallback(() => {
+        GetPosts()
+            .execute()
+            .then(({ data }) => {
+                setPosts(data);
+            })
+    }, [])
 
     return {
-        data,
-        loadPosts,
-        setPostsLoader
+        postLoader,
+        posts
     }
 };
 

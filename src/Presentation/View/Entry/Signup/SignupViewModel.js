@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ValidateUsername from "../../../../Domain/UseCase/User/ValidateUsername";
 import ValidateMobileEmail from "../../../../Domain/UseCase/User/ValidateMobileEmail";
 import Register from "../../../../Domain/UseCase/User/Register";
+import { useUser } from "../../../Context/UserContext/UserContext";
 
 export const SignupViewModel = () => {
 
@@ -22,6 +23,8 @@ export const SignupViewModel = () => {
     const [validMobileOrEmail, setValidMobileOrEmail] = useState(null);
     const [validUsername, setValidUsername] = useState(null);
     const [validFullName, setValidFullName] = useState(null);
+
+    const usernameSetter = useUser();
 
     useEffect(
         () => {
@@ -68,8 +71,9 @@ export const SignupViewModel = () => {
             }
             else if (mobileRegex.current.test(mobileOrEmail) || emailRegex.current.test(mobileOrEmail)) {
                 ValidateMobileEmail()
-                    .execute({mobileOrEmail})
+                    .execute(mobileOrEmail)
                     .then(({ data }) => {
+                        console.log(data);
                         if (data) {
                             setValidMobileOrEmail(validStyle);
                         }
@@ -124,7 +128,9 @@ export const SignupViewModel = () => {
                 .execute(user)
                 .then(({data}) => {
                     if(data.username != null)
-                    navigate("/home", { state: { username: username } });
+                    usernameSetter.setUsername(username);
+                    localStorage.setItem("username", username);
+                    navigate("/home");
                 })
                 .catch((error) => {
                     errorMessage = "Unable to create user with given information. Please try entering different data. " + error.message;

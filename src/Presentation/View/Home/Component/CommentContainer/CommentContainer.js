@@ -6,8 +6,8 @@ const CommentContainer = (props) => {
     return (
         <>
             {
-                comments.map(({ comment, creationDate, key }) => (
-                    <Comment username={key.username} creationDate={creationDate} content={comment} />
+                comments?.map(({ comment, creationDate, key }) => (
+                    <Comment key={key} id={key.id} username={key.username} creationDate={creationDate} content={comment} />
                 ))
             }
         </>

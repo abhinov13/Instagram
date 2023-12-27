@@ -3,8 +3,6 @@ import { validateUniqueCredential } from "../../../Data/Repository/user_reposito
 const ValidateMobileOrUsername = () => {
     return {
         async execute(params) {
-            console.log('from validate');
-            console.log(params);
             const { data, error } = await validateUniqueCredential(params);
             return { data, error };
         }

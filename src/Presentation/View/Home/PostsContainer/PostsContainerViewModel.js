@@ -1,36 +1,13 @@
 import { useState, useEffect } from "react";
-import GetPosts from "../../../../Domain/UseCase/Post/GetPosts";
 
-const PostContainerViewModel = ({setPostsLoader}) => {
-    const [posts, setPosts] = useState([]);
-
-    const loadPosts = () => {
-        GetPosts()
-            .execute()
-            .then(({ data }) => {
-                console.log("after getting the posts");
-                console.log(data);
-                if (data != null) {
-                    setPosts(data);
-                }
-                else {
-                    alert('Oops! An error has occurred');
-                }
-            });
-    };
+const PostContainerViewModel = ({ postLoader }) => {
+    const [postUsername, setPostUsername] = useState("");
 
     useEffect(
         () => {
-            loadPosts();
-        },[]
+            postLoader();
+        }, [postLoader]
     );
-
-    useEffect(
-        () => {
-            console.log("trying to set loader");
-            setPostsLoader(loadPosts);
-        }, [setPostsLoader]
-    )
 
     const [data, setData] = useState(null);
 
@@ -38,15 +15,16 @@ const PostContainerViewModel = ({setPostsLoader}) => {
         setData(null);
     }
 
-    function getPopupParams(data) {
+    function getPopupParams(data, postUsername) {
         data = { ...data, resetPopupParams };
         setData(data);
+        setPostUsername(postUsername);
     }
 
     return {
-        posts,
         getPopupParams,
-        data
+        data,
+        postUsername
     }
 }
 

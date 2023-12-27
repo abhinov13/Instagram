@@ -25,3 +25,17 @@ export const getReplyComment = (reply) => {
     return axios.get(call);
 }
 
+export const like = (params) => {
+    const call = link + '/like';
+    return axios.post(call, params);
+}
+
+export const unlike = (params) => {
+    const call = link + '/unlike';
+    return axios.post(call, params);
+}
+
+export const getLikes = ({ username, id }) => {
+    const call = link + "/getLikes/" +username + "/" + id;
+    return axios.get(call);
+}

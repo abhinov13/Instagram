@@ -5,7 +5,7 @@ const ForgotPassword = (props) => {
     return (
         <>
             <div className="login_form" style={{ height: "87%" }}>
-                <img src="lock.svg" className="forgot_logo centre_horizontally" alt="Lock Logo" /><br />
+                <img src="/lock.svg" className="forgot_logo centre_horizontally" alt="Lock Logo" /><br />
                 <div className="centre_horizontally" style={{ width: "75%", position: "relative", textAlign: "center", top: "5%" }}>
                     Trouble logging in?<br />
                 </div>

@@ -12,7 +12,7 @@ const CreatePost = (props) => {
     return <div className="banner_wrapper">
         <div className="upload">
             <div className="banner_header">Create New Post
-                <img src="close.svg" alt="close button" style={{ height: "80%", float: "right", marginRight: "2%", cursor: "pointer" }} onClick={() => { props.setCreate(false) }} />
+                <img src="/close.svg" alt="close button" style={{ height: "80%", float: "right", marginRight: "2%", cursor: "pointer" }} onClick={() => { props.setCreate(false) }} />
             </div>
             <div style={{ backgroundColor: "#444444", height: "0.01rem", width: "100%" }} className="centre_vertically" />
             <div className="create_post_seperator">
