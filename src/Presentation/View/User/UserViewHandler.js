@@ -30,6 +30,8 @@ const UserViewHandler = (profileUsername) => {
                 .execute(profileUsername)
                 .then(({ data }) => {
                     if (data != null) {
+                        data = data.map((post) => ({...post, creationDate: new Date(post.creationDate)}));
+                        data = data.sort((post1,post2) => (post2.creationDate - post1.creationDate));
                         setPosts(data);
                         setPostCount(data.length);
                     }
@@ -61,8 +63,6 @@ const UserViewHandler = (profileUsername) => {
                     navigate("/NotFound");
                 }
                 else {
-                    console.log("data");
-                    console.log(data);
                     setName(data.name);
                     if (data.profilePictureUrl)
                         setSrc(data.profilePictureUrl)

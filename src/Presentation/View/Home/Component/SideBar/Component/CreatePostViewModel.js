@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Create } from "../../../../../../Domain/UseCase/Post/Create";
 import { useUser } from "../../../../../Context/UserContext/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,6 @@ const CreatePostViewModel = (props, location) => {
             .execute(file, username, description)
             .then(({ data }) => {
                 if (data) {
-                    console.log(location.pathname);
                     if (props.postLoader != null && location.pathname.toLowerCase() === '/home')
                         props.postLoader();
                     else if (location.pathname !== '/home')
@@ -24,12 +23,15 @@ const CreatePostViewModel = (props, location) => {
                     else
                         alert('Oops! UI has an error');
                 }
-                else
-                {
+                else {
                     console.log("error ");
                 }
             });
     }
+
+    useEffect(() => {
+        console.log(file);
+    }, [file])
 
     const updateImage = (e) => {
         if (e.target.files[0] == null) {
@@ -44,6 +46,7 @@ const CreatePostViewModel = (props, location) => {
 
     return {
         imgSrc,
+        file,
         setDescription,
         uploadRequest,
         updateImage

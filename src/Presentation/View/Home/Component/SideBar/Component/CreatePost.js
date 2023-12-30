@@ -6,7 +6,8 @@ const CreatePost = (props) => {
         imgSrc,
         setDescription,
         uploadRequest,
-        updateImage
+        updateImage,
+        file
     } = CreatePostViewModel(props, useLocation());
 
     return <div className="banner_wrapper">
@@ -17,13 +18,17 @@ const CreatePost = (props) => {
             <div style={{ backgroundColor: "#444444", height: "0.01rem", width: "100%" }} className="centre_vertically" />
             <div className="create_post_seperator">
                 <div style={{ width: "63%" }}>
-                    <img src={imgSrc} alt="original post" style={{ height: "100%", width: "100%" }} />
+                    {
+                        !file || (file && !file.type === "video/mp4") ? <img src={imgSrc} alt="original post" style={{ height: "100%", width: "100%", objectFit: "contain" }} />
+                            :
+                            <video src={imgSrc} alt="original post" style={{ height: "100%", width: "100%", objectFit: "contain" }} controls />
+                    }
                 </div>
                 <div style={{ width: "33%" }} className="create_post_control">
                     Description
                     <textarea onChange={(e) => { setDescription(e.target.value) }} maxLength="1000" />
                     <label for="image-upload">Select Image</label>
-                    <input id="image-upload" type="file" style={{ display: "none" }} accept="image/*" onChange={(e) => { updateImage(e) }} />
+                    <input id="image-upload" type="file" style={{ display: "none" }} accept="image/*, video/*" onChange={(e) => { updateImage(e) }} />
                     <label onClick={uploadRequest}>Create Post</label>
                 </div>
             </div>

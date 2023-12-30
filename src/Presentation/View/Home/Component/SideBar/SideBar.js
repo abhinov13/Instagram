@@ -9,7 +9,9 @@ const SideBar = (props) => {
       goToHome,
       goToSearch,
       goToNotifications,
-      goToUser
+      goToUser,
+      goToChat,
+      type
    } = SideBarViewModel();
 
    if (props.isOpen) {
@@ -22,8 +24,11 @@ const SideBar = (props) => {
                <div onClick={goToSearch}><img src="/search.svg" alt="Search icon" /> <span className="side_bar_button_text">Search</span></div>
                <div><img src="/compass.svg" alt="Explore icon" /> <span className="side_bar_button_text">Explore</span></div>
                <div><img src="/reels.svg" alt="Reels icon" /> <span className="side_bar_button_text">Reels</span></div>
-               <div><img src="/messenger.svg" alt="Messenger icon" /> <span className="side_bar_button_text">Messages</span></div>
-               <div onClick={goToNotifications}><img src="/heart.svg" alt="Notifications icon" /> <span className="side_bar_button_text">Notifications</span></div>
+               <div onClick={goToChat} ><img src="/messenger.svg" alt="Messenger icon" /> <span className="side_bar_button_text">Messages</span></div>
+               <div onClick={goToNotifications}>
+                  <img src={type.length === 0 ? "/heart.svg" : "/whiteHeart.svg"} alt="Notifications icon" />
+                  <span className="side_bar_button_text">Notifications</span>
+               </div>
                <div onClick={() => { setCreate(true) }}><img src="/create.svg" alt="Create Post icon" /> <span className="side_bar_button_text">Create</span></div>
                <div onClick={goToUser} ><img src="/user.svg" alt="profile icon" /> <span className="side_bar_button_text">Profile</span></div>
                <div><img src="/menu.svg" alt="menu icon" /> <span className="side_bar_button_text">More</span></div>

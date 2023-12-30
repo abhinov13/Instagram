@@ -17,14 +17,11 @@ const LikeButtonViewHandler = ({ postUsername, postId, likedBy, setLikedBy }) =>
             setStyle(notLikedStyle);
             Unlike()
                 .execute(username, postUsername, postId)
-                .then((data) => {
-                    console.log("likedby list before");
-                    console.log(likedBy);
-                    console.log(data);
-                    const list = likedBy.filter((comp) => (comp !== username));
-                    console.log("likedby list after");
-                    console.log(list);
-                    setLikedBy(list);
+                .then(({ data }) => {
+                    if (data) {
+                        const list = likedBy.filter((comp) => (comp !== username));
+                        setLikedBy(list);
+                    }
                 });
         }
         else {

@@ -46,7 +46,7 @@ const User = () => {
                 </div>
                 <div className="user_posts">
                     {posts.map((post) => {
-                        return <UserPost post={post} getPopupParams={getPopupParams} />;
+                        return <UserPost key={post.src} post={post} getPopupParams={getPopupParams} />;
                     })}
                 </div>
             </div>

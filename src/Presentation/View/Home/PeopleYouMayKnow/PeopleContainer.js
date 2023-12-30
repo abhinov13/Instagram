@@ -13,7 +13,7 @@ const PeopleContainer = () => {
                             fullName={person.user.name}
                             common={person.common.map((user) => (user.username))}
                             followers={following}
-                            src={person.profilePictureUrl}
+                            src={person.user.profilePictureUrl}
                         />
                     </div>
                 })

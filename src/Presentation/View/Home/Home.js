@@ -9,6 +9,7 @@ import { WebSocketProvider } from "../../Context/WSContext/WSContext";
 import { StompSessionProvider } from "react-stomp-hooks";
 import Notifications from "./Component/Notifications/Notifications";
 import User from "../User/User";
+import Chat from "./Component/Chat/Chat";
 const Home = () => {
     const {
         posts,
@@ -25,6 +26,7 @@ const Home = () => {
                         <Route path="/" element={<><PostsContainer posts={posts} postLoader={postLoader} /> <SuggestedFriendsBar /> </>} />
                         <Route path="/Notifications" Component={Notifications} />
                         <Route path="/User/:profileUsername" Component={User} />
+                        <Route path="/Chat" Component={Chat} />
                         <Route path='/*' element={<Navigate to='/NotFound' />} />
                     </Routes>
                 </div>

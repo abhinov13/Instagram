@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../../Context/UserContext/UserContext";
+import { useWebSocket } from "../../../../Context/WSContext/WSContext";
 const SideBarViewModel = () => {
 
     const [create, setCreate] = useState(false);
 
-    const {username} = useUser();
+    const { username } = useUser();
+    const { type } = useWebSocket();
 
     const create_button_handler = () => {
         setCreate(true);
@@ -25,9 +27,12 @@ const SideBarViewModel = () => {
         navigate("/Home/Notifications");
     }
 
-    function goToUser()
-    {
-        navigate("/home/user/"+username);
+    function goToUser() {
+        navigate("/home/user/" + username);
+    }
+
+    function goToChat() {
+        navigate("/home/chat");
     }
 
     return {
@@ -37,7 +42,9 @@ const SideBarViewModel = () => {
         goToHome,
         goToSearch,
         goToNotifications,
-        goToUser
+        goToUser,
+        type,
+        goToChat
     }
 }
 

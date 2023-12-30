@@ -18,7 +18,7 @@ const ProfilePictureUploaderViewHandler = (props) => {
                 GetUser()
                     .execute(username)
                     .then(({ data }) => {
-                        setImgSrc(data.profilePictueUrl);
+                        setImgSrc(data.profilePictureUrl);
                     })
             }
         }, [username]

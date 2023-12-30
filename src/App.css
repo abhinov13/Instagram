@@ -103,7 +103,7 @@ body {
 body {
    width: 100vw;
    height: 100vh;
-   background-color: black;
+   background-color: #101010;
 }
 
 .homepage_wrapper {
@@ -202,13 +202,15 @@ side_bar_button_img {
 
 .post_wrapper {
    width: 50%;
-   margin-top: 2%;
-   margin-bottom: 2%;
+   margin-top: 1%;
+   padding: 2%;
+   border-radius: 10px;
    color: white;
+   background-color: #131313;
 }
 
 .post_head {
-   height: 8vh;
+   height: 6vh;
    width: 100%;
    display: flex;
    flex-direction: row;
@@ -216,7 +218,7 @@ side_bar_button_img {
 }
 
 .post_user_img {
-   height: 50%;
+   height: 90%;
    aspect-ratio: 1/1;
    border-radius: 50%;
    background-color: gray;
@@ -227,24 +229,18 @@ side_bar_button_img {
 .post_user_img>img {
    height: 100%;
    width: 100%;
-   border-radius: 50%;
-}
-
-.post_username {
-   margin-left: 2%;
+   object-fit: cover;
 }
 
 .dot_seperator {
    border-radius: 50%;
    height: 0.5vh;
-   width: 0.5vh;
+   aspect-ratio: 1/1;
    background-color: gray;
    position: relative;
-   margin-left: 1%;
 }
 
 .date_posted {
-   margin-left: 1%;
    color: gray;
 }
 
@@ -268,7 +264,42 @@ side_bar_button_img {
    height: 100%;
 }
 
+.post_data>div {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.post_data>div>video {
+   width: 100%;
+   height: 100%;
+   flex-shrink: 0;
+}
+
+.post_data>div>div {
+   width: 100%;
+   flex-shrink: 0;
+   margin-left: -100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.post_data>div>div>img {
+   width: 10%;
+   aspect-ratio: 1/1;
+   z-index: 2;
+   visibility: hidden;
+}
+
+.post_data:hover div>div>img {
+   visibility: visible;
+}
+
 .post_interact {
+   margin-top: 1%;
    height: 3vh;
    width: 100%;
    display: flex;
@@ -278,16 +309,13 @@ side_bar_button_img {
 .post_interact>div {
    width: 8%;
    aspect-ratio: 1/1;
+   display: grid;
 }
 
 .post_interact>div>img {
    height: 100%;
    width: 100%;
    transition: opacity 0.3s;
-}
-
-.post_interact>div {
-   display: grid;
 }
 
 .liked>img,
@@ -304,13 +332,51 @@ side_bar_button_img {
    line-height: 1.8em;
 }
 
+.post_comment{
+   height: 5vh;
+   display: flex;
+   flex-direction: row;
+   align-items: flex-end;
+   justify-content: center;
+}
+
+.post_comment>input{
+   height: 90%;
+   background-color: rgba(0,0,0,0);
+   border: 0px;
+   color: white;
+   border-bottom: 1px solid gray;
+   flex: 1;
+   margin-right: 1.5%;
+}
+
+.post_comment>focus{
+   outline: none;
+}
+
+.post_comment>button{
+   background-color: #2d3436;
+   border: none;
+   outline: none;
+   height: 80%;
+   border-radius: 5px;
+   border: 0px;
+   color: white;
+   cursor: pointer;
+}
 
 .comment {
    width: 100%;
+   height: 5%;
+   color: white;
+   margin-top: 3%;
+   display: flex;
+   justify-content: space-between;
 }
 
 .comment>input {
-   width: 100%;
+   flex: 1;
+   margin-right: 1.5%;
    background-color: rgba(0, 0, 0, 0);
    border: 0px;
    color: white;
@@ -321,12 +387,11 @@ side_bar_button_img {
    outline: none;
 }
 
-.comment_send {
+.comment>button {
    background-color: #2d3436;
    border: none;
    outline: none;
    width: 12.5%;
-   padding: 2%;
    border-radius: 5px;
    border: 0px;
    color: white;
@@ -365,7 +430,7 @@ side_bar_button_img {
    border-radius: 50%;
 }
 
-.person_image>img{
+.person_image>img {
    height: 100%;
    width: 100%;
    object-fit: cover;
@@ -471,7 +536,7 @@ side_bar_button_img {
 
 .post_popup_body {
    align-self: center;
-   background-color: black;
+   background-color: #101010;
    height: 90%;
    width: 80%;
    display: flex;
@@ -484,6 +549,12 @@ side_bar_button_img {
    width: 50%;
 }
 
+.post_popup_image>video {
+   height: 100%;
+   width: 100%;
+   object-fit: contain;
+}
+
 .post_popup_description {
    height: 100%;
    flex: 1;
@@ -491,11 +562,12 @@ side_bar_button_img {
    flex-direction: column;
    justify-content: flex-start;
    border-left: 1px solid #2d3436;
+   padding-left: 2%;
+   padding-right: 2%;
 }
 
 .post_popup_description>div {
    display: flex;
-   margin-left: 3%;
    text-wrap: wrap;
 }
 
@@ -518,7 +590,7 @@ side_bar_button_img {
    height: 60%;
    aspect-ratio: 1/1;
    object-fit: cover;
-   background-color: black;
+   background-color: #101010;
 }
 
 .post_popup_owner>div {
@@ -529,7 +601,7 @@ side_bar_button_img {
 }
 
 .comment_section {
-   height: 65%;
+   height: 67%;
    width: 90%;
    display: flex;
    flex-direction: column;
@@ -745,13 +817,13 @@ div::-webkit-scrollbar {
    color: #95a5a6
 }
 
-.notifications>div>div{
+.notifications>div>div {
    height: 70%;
    display: flex;
    align-items: center;
 }
 
-.notifications>div>div>img{
+.notifications>div>div>img {
    height: 100%;
    aspect-ratio: 1/1;
    border-radius: 50%;
@@ -782,6 +854,7 @@ div::-webkit-scrollbar {
    align-items: center;
    margin-top: 2%;
    overflow-y: scroll;
+   background-color: #101010;
 }
 
 .userdata {
@@ -860,7 +933,32 @@ div::-webkit-scrollbar {
    aspect-ratio: 1/1;
 }
 
-.user_posts>div>img {
+.user_posts>div>div
+{
+   height: 100%;
+   width: 100%;
+   display: flex;
+}
+
+.user_posts>div>div>div{
+   height: 100%;
+   width: 100%;
+   z-index: 2;
+   flex-shrink: 0;
+   margin-left: -100%;
+   display: flex;
+}
+
+.user_posts>div>div>div>img{
+   height: 10%;
+   width: 10%;
+   align-self: flex-end;
+   margin-left: 2%;
+   margin-bottom: 2%;
+}
+
+.user_posts>div>img,
+.user_posts>div>div>video {
    height: 100%;
    width: 100%;
    flex-shrink: 0;
@@ -880,12 +978,12 @@ div::-webkit-scrollbar {
    color: rgba(0, 0, 0, 0);
 }
 
-.user_post_item:hover{
+.user_post_item:hover {
    color: white;
    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.profile_uploader_wrapper{
+.profile_uploader_wrapper {
    position: absolute;
    height: 100%;
    width: 100%;
@@ -893,11 +991,11 @@ div::-webkit-scrollbar {
    justify-content: center;
    align-items: center;
    z-index: 5;
-   background-color: rgba(0,0,0,0.6);
+   background-color: rgba(0, 0, 0, 0.6);
    transition: opacity 1s;
 }
 
-.profile_uploader_wrapper>div{
+.profile_uploader_wrapper>div {
    height: 65%;
    aspect-ratio: 2/1;
    background-color: #1d2426;
@@ -906,7 +1004,7 @@ div::-webkit-scrollbar {
    justify-content: space-between;
 }
 
-.profile_uploader_wrapper>div>div{
+.profile_uploader_wrapper>div>div {
    flex: 1;
    display: flex;
    flex-direction: column;
@@ -914,24 +1012,165 @@ div::-webkit-scrollbar {
    align-items: center;
 }
 
-.profile_uploader_wrapper>div>div>img{
+.profile_uploader_wrapper>div>div>img {
    height: 80%;
    aspect-ratio: 1/1;
    object-fit: cover;
    border-radius: 50%;
-   background-color: black;
+   background-color: #101010;
 }
-.profile_uploader_wrapper>div>div>div{
+
+.profile_uploader_wrapper>div>div>div {
    display: flex;
    flex-direction: column;
    height: 60%;
    width: 50%;
    justify-content: space-around;
 }
-.profile_uploader_wrapper>div>div>div>label{
+
+.profile_uploader_wrapper>div>div>div>label {
    display: flex;
    justify-content: center;
    align-items: center;
    height: 20%;
    background-color: #2C95D9;
+}
+
+.chat_wrapper{
+   flex: 1;
+   height: 100%;
+   display: flex;
+   flex-direction: row;
+}
+
+.lobby_wrapper{
+   margin-left: 2%;
+   padding-right: 2%;
+   width: 30%;
+   max-width: 30vw;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   border-right: 1px solid #222222;
+}
+
+.lobby_header{
+   width: 100%;
+   height: 10%;
+   margin-top: 3%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-size: larger;
+}
+
+.lobby_header>img{
+   height: 50%;
+   aspect-ratio: 1/1;
+   cursor: pointer;
+}
+
+.message_holder{
+   flex: 1;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.lobby{
+   flex: 1;
+   margin-top: 3%;
+   overflow-y: scroll;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+}
+
+.lobby>div{
+   margin-bottom: 2%;
+   width: 100%;
+   height: 10%;
+   flex-shrink: 0;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   background-color: #151515;
+   border-radius: 10px;
+}
+
+.lobby>div>div{
+   margin-left: 2%;
+   margin-right: 2%;
+}
+
+.lobby>div>div>img{
+   height: 100%;
+   aspect-ratio: 1/1;
+   background-color: #1e272e;
+   border-radius: 50%;
+}
+
+.search_user_wrapper{
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(0,0,0,0.7);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.search_user_wrapper>div{
+   height: 67%;
+   aspect-ratio: 1/1;
+   border-radius: 10px;
+   background-color: #1d2426;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.search_user_wrapper>div>div{
+   width: 96%;
+   padding-left: 2%;
+   padding-right: 2%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   flex-shrink: 0;
+}
+
+.empty_message{
+   height: 30%;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.empty_message>div{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.empty_message>div>img{
+   height: 50%;
+   width: 50%;
+   object-fit: contain;
+}
+
+.empty_message>button{
+   margin-top: 2%;
+   border: 0;
+   outline: 0;
+   padding: 1%;
+   border-radius: 10px;
+   background-color: #2C95D9;
+   color: white;
+   font-weight: bold;
 }

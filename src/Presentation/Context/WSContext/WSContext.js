@@ -14,6 +14,7 @@ export const WebSocketProvider = ({ children }) => {
     const { username } = useUser();
 
     const [notifications, setNotifications] = useState([]);
+    const [type, setType] = useState([]);
 
     const sendToTopic = useCallback((data) => {
         if (stompClient)
@@ -31,15 +32,28 @@ export const WebSocketProvider = ({ children }) => {
     useSubscription('/topic/' + username,
         (message) => {
             var temp = JSON.parse(message.body);
-            temp = temp.map((obj) => ({...obj, date: new Date(obj.date)}));
-            temp.sort((notif1,notif2) => (notif2.date - notif1.date));
+            temp = temp.map((obj) => ({ ...obj, date: new Date(obj.date) }));
+            temp.sort((notif1, notif2) => (notif2.date - notif1.date));
             setNotifications(temp);
         }
     );
 
+    useEffect(() => {
+        let unseenNotifs = notifications.filter(({ seen }) => (seen === 'unseen'));
+        let types = [];
+        if (unseenNotifs.filter(({ type }) => (type === "Friend Request")).length > 0)
+            types = [...types, "Friend Request"];
+        if (unseenNotifs.filter(({ type }) => (type === "Comment")).length > 0)
+            types = [...types, "Comment"];
+        if (unseenNotifs.filter(({ type }) => (type === "Post")).length > 0)
+            types = [...types, "Post"];
+        setType(types);
+    }, [notifications])
+
     const store = {
         sendToTopic,
-        notifications
+        notifications,
+        type
     }
 
     return (
