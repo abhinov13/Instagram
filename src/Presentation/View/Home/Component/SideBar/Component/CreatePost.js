@@ -25,7 +25,7 @@ const CreatePost = (props) => {
                     }
                 </div>
                 <div style={{ width: "33%" }} className="create_post_control">
-                    Description
+                    <div style={{width: "100%", overflow: "hidden"}}>Description</div>
                     <textarea onChange={(e) => { setDescription(e.target.value) }} maxLength="1000" />
                     <label for="image-upload">Select Image</label>
                     <input id="image-upload" type="file" style={{ display: "none" }} accept="image/*, video/*" onChange={(e) => { updateImage(e) }} />

@@ -5,8 +5,8 @@ const Search = () => {
 
     const { search,
         updateSearchKey,
-        searchOption,
-        updateSearchOption,
+        //searchOption,
+        //updateSearchOption,
         data } = SearchViewHandler();
 
     return (
@@ -16,10 +16,12 @@ const Search = () => {
                 <button type="submit" style={{ cursor: 'pointer' }}><img src="/search.svg" alt="search" style={{ height: '100%' }} /></button>
             </form>
 
-            <div className="search_option">
+            {/**
+             * <div className="search_option">
                 <div style={searchOption === 'Accounts' ? { borderBottom: '1px solid white' } : {}} onClick={() => updateSearchOption('Accounts')}>Accounts</div>
                 <div style={searchOption === 'Posts' ? { borderBottom: '1px solid white' } : {}} onClick={() => updateSearchOption('Posts')}>Posts</div>
             </div>
+             */}
 
             <SearchResults data={data} />
 

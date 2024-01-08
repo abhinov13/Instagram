@@ -16,7 +16,7 @@ const SearchPerson = (props) => {
                 {common != null ? <div>{common}</div> : null}
             </div>
             <div style={{ width: "15%" }}>
-                <button style={{ height: "65%", width: "100%" }} onClick={() => { follow() }} >
+                <button style={{ height: "65%", width: "100%", minHeight: "20px", minWidth: "60px" }} onClick={() => { follow() }} >
                     {followed ? 'Following' : 'Follow'}
                 </button>
             </div>

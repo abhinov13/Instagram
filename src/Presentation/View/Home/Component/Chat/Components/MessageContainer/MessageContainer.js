@@ -78,6 +78,7 @@ const style = {
     },
     send: {
         width: "10%",
+        minWidth: "41px",
         height: "100%",
         borderLeft: "1px solid white",
         display: "flex",

@@ -28,6 +28,7 @@ const style = {
     },
     imgContainer: {
         width: "3%",
+        minWidth: "25px",
         aspectRatio: "1/1",
         display: "flex",
         alignItems: "center",

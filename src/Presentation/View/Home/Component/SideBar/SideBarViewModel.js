@@ -8,6 +8,7 @@ const SideBarViewModel = () => {
 
     const { username } = useUser();
     const { type } = useWebSocket();
+    const {setUsername} = useUser();
 
     const create_button_handler = () => {
         setCreate(true);
@@ -35,6 +36,11 @@ const SideBarViewModel = () => {
         navigate("/home/chat");
     }
 
+    function logOut(){
+        setUsername(null);
+        navigate("/")
+    }
+
     return {
         create,
         setCreate,
@@ -44,7 +50,8 @@ const SideBarViewModel = () => {
         goToNotifications,
         goToUser,
         type,
-        goToChat
+        goToChat,
+        logOut
     }
 }
 

@@ -16,15 +16,17 @@ const Chat = () => {
     return (
         <>
             {toggleSearchBar ? <SearchMessageUser setToggleSearchBar={setToggleSearchBar} setLobby={setLobby} /> : <></>}
-            <div className="chat_wrapper"> 
+            <div className="chat_wrapper">
                 <div className="lobby_wrapper">
                     <div className="lobby_header">
-                        <span style={{ cursor: "pointer" }}>{username} </span>
-                        <img
-                            src="/createMessage.svg"
-                            alt="create message"
-                            onClick={() => { setToggleSearchBar(true) }}
-                        />
+                        <div style={{ cursor: "pointer", width: "90%", minWidth: "0", justifyContent: "flex-start", overflowX: "hidden" }}>{username} </div>
+                        <div style={{ flex: "1" }}>
+                            <img
+                                src="/createMessage.svg"
+                                alt="create message"
+                                onClick={() => { setToggleSearchBar(true) }}
+                            />
+                        </div>
                     </div>
                     <div style={{ fontWeight: "bold" }}>Messages</div>
                     <div className="lobby">

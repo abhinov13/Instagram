@@ -14,10 +14,10 @@ const Lobby = (props) => {
         <div style={{ height: "80%", aspectRatio: "1/1" }}>
             <img src={src} alt="user avatar" onClick={goToUser} />
         </div>
-        <div style={{ flex: "1" }} onClick={openChat}>
+        <div style={{ flex: "1", overflow: "hidden" }} onClick={openChat}>
             <div>{username}</div>
-            <div>
-                {lastMessage ? (senderName + ": " + lastMessage.message).substring(0, 28)
+            <div style={{ width: "calc(95%)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {lastMessage ? senderName + ": " + lastMessage.message
                     : null}
             </div>
         </div>
