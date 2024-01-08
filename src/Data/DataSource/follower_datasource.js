@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const link = 'http://localhost:8080/';
+const link = 'http://13.51.48.38:8080/';
 
 export const getRecommendation = (username) => {
     const call = link + 'getRecommendedPeople/' + username;

@@ -1,5 +1,5 @@
 import axios from "axios";
-const link = 'http://localhost:8080/user';
+const link = 'http://13.51.48.38:8080/user';
 
 /**
  * @param {{name,username,mobile,password,email}} user

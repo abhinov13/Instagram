@@ -16,7 +16,7 @@ const Home = () => {
         postLoader
     } = HomeViewModel();
     return (
-        <StompSessionProvider url={'http://localhost:8080/notifications'}>
+        <StompSessionProvider url={'http://13.51.48.38:8080/notifications'}>
             <WebSocketProvider>
                 <div className="homepage_wrapper">
                     <SideBar isOpen={true} postLoader={postLoader} />
